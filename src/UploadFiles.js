@@ -4,15 +4,21 @@ import './UploadFiles.css';
 import PoupUp from './PopUp';
 function UploadFiles() {
     const [fileNames, setFileNameFor] = useState([]);
+    const [files, setFilesFor] = useState([]);
     const [fileIndex, setFileIndex] = useState(0);
     const onChangeHandler = (event) => {
         let FilesList = [];
+        let FilesObj=[];
         FilesList = [...fileNames];
+
         Object.entries(event.target.files).forEach(([key, value]) => {
             FilesList.push(value.name);
+            
+            FilesObj.push(value)
         });
         setFileNameFor(FilesList);
-        setTimeout(UploadFilesToServer(), 1000);
+        setFilesFor(FilesObj)
+        setTimeout(UploadFilesToServer(FilesObj), 1000);
 
     }
     const deleteFile = () => {
@@ -20,20 +26,31 @@ function UploadFiles() {
         let deletedItem = fileList.splice(fileIndex, 1);
         setFileNameFor(fileList);
     }
-    const UploadFilesToServer = () => {
-        const data = new FormData()
-        data.append('file', fileNames);
-        axios.post('http://localhost:8080/uploadFiles', data);
+    const UploadFilesToServer = (FilesObj) => {
+        const data = new FormData();
+        FilesObj.map(file=>{
+            data.append('file', file);
+        })
+        
+        axios.post('http://localhost:8080/uploadFiles', data).then(res=>{
+            console.log(res);
+        });
     }
     const getFileIndexToDelete = (index) => {
         setFileIndex(index);
+    }
+    const downloadFile=(filename)=>{
+        console.log(filename);
+        axios.get('http://localhost:8080/downloadFile').then(res=>{
+            alert('File downloaded !!');
+        })
     }
     const renderTableData = () => {
         return fileNames.map((filename, index) => {
             return (
                 <tr key={index}>
                     <td>{index + 1}</td>
-                    <td><a href={filename} download>{filename}</a></td>
+                    <td><span className="file-name-dec" onClick={()=>{downloadFile(filename)}}>{filename}</span></td>
                     <td><span
                         title="Delete"
                         className="glyphicon glyphicon-trash file-del"
