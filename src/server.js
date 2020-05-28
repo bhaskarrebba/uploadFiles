@@ -1,14 +1,32 @@
 var express = require('express');
-var app = new express();
+var app = express();
 var cors = require('cors');
-app.use(cors);
+var multer = require('multer');
+var router = express.Router();
+app.use(cors());
 const port = 8080;
 
-// app.get('/', (req, res) => res.send('Hello World!'))
-// app.post('/uploadFiles', function (req, res) {
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+    cb(null, '/Users/bhaskar/Uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname )
+  }
+});
+var upload = multer({ storage: storage }).single('file');
+app.post('/uploadFiles', function (req, res) {
+    upload(req, res, function (err) {
+        if (err instanceof multer.MulterError) {
+            return res.status(500).json(err)
+        } else if (err) {
+            return res.status(500).json(err)
+        }
+   return res.status(200).send(req.file)
 
-//     upload(req, res, function (err) {
-//         return res.status(200).send(req.file)
-//     })
-// });
+ })
+});
+app.get('/downloadFile', (req, res) => {
+ 
+});
 app.listen(port, () => console.log(` app listening at http://localhost:${port}`))
