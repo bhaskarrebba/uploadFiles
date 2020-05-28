@@ -35,4 +35,16 @@
   .file-del{
     cursor:pointer;
   }
+  .file-del:hover{
+    color:red;
+  }
+  .file-name-dec{
+      text-decoration: underline;
+      cursor: pointer;
+      color:blue;
+  }
+  .file-name-dec:hover{
+    color: green;
+    font-weight: 900;
+  }
   
