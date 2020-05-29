@@ -8,12 +8,12 @@ function UploadFiles() {
     const [fileIndex, setFileIndex] = useState(0);
     const onChangeHandler = (event) => {
         let FilesList = [];
-        let FilesObj=[];
+        let FilesObj = [];
         FilesList = [...fileNames];
 
         Object.entries(event.target.files).forEach(([key, value]) => {
             FilesList.push(value.name);
-            
+
             FilesObj.push(value)
         });
         setFileNameFor(FilesList);
@@ -28,21 +28,30 @@ function UploadFiles() {
     }
     const UploadFilesToServer = (FilesObj) => {
         const data = new FormData();
-        FilesObj.map(file=>{
+        FilesObj.map(file => {
             data.append('file', file);
         })
-        
-        axios.post('http://localhost:8080/uploadFiles', data).then(res=>{
+
+        axios.post('http://localhost:8080/uploadFiles', data).then(res => {
             console.log(res);
         });
     }
     const getFileIndexToDelete = (index) => {
         setFileIndex(index);
     }
-    const downloadFile=(filename)=>{
+    const downloadFile = (filename) => {
         console.log(filename);
-        axios.get('http://localhost:8080/downloadFile').then(res=>{
-            alert('File downloaded !!');
+        axios.get('http://localhost:8080/downloadFile', {
+           params: {
+                filename: filename
+            }
+        }).then(res => {
+            const url = window.URL.createObjectURL(new Blob([res.data]));
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
         })
     }
     const renderTableData = () => {
@@ -50,7 +59,7 @@ function UploadFiles() {
             return (
                 <tr key={index}>
                     <td>{index + 1}</td>
-                    <td><span className="file-name-dec" onClick={()=>{downloadFile(filename)}}>{filename}</span></td>
+                    <td><span className="file-name-dec" onClick={() => { downloadFile(filename) }}>{filename}</span></td>
                     <td><span
                         title="Delete"
                         className="glyphicon glyphicon-trash file-del"
