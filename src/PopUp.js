@@ -6,8 +6,9 @@ const PopUp = props => {
         <div className="modal-dialog">
             <div className="modal-content">
                 <div className="modal-header">
+                <h4 className="modal-title">Delete</h4>
                     <button type="button" className="close" data-dismiss="modal">&times;</button>
-                    <h4 className="modal-title">Delete</h4>
+                
                 </div>
                 <div className="modal-body">
                     <p>Are you sure want to delete this item?</p>
