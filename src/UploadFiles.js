@@ -42,7 +42,7 @@ function UploadFiles() {
     const downloadFile = (filename) => {
         console.log(filename);
         axios.get('http://localhost:8080/downloadFile', {
-           params: {
+            params: {
                 filename: filename
             }
         }).then(res => {
@@ -66,7 +66,7 @@ function UploadFiles() {
                         data-toggle="modal"
                         data-target="#myModal"
                         onClick={() => getFileIndexToDelete(index)}
-                    ></span></td>
+                    ><i class="fas fa-trash"></i></span></td>
                 </tr>
             )
         })
@@ -74,7 +74,10 @@ function UploadFiles() {
 
     return (
         <div className="App">
-            <input type="file" className="upload-btn" name="file" multiple onChange={onChangeHandler} /><br />
+            <div className="custom-file mb-3">
+                <input type="file" className="custom-file-input" id="customFile" name="filename" multiple onChange={onChangeHandler} />
+                <label className="custom-file-label" for="customFile">Choose file</label>
+            </div>
             <table id="filename">
                 <thead>
                     <tr><th>SNo</th>
