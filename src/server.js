@@ -4,6 +4,7 @@ var cors = require('cors');
 var multer = require('multer');
 var router = express.Router();
 app.use(cors());
+app.use(express.static('/Users/bhaskar/Uploads'))
 const port = 8080;
 
 var storage = multer.diskStorage({
@@ -14,7 +15,7 @@ var storage = multer.diskStorage({
     cb(null, file.originalname )
   }
 });
-var upload = multer({ storage: storage }).single('file');
+var upload = multer({ storage: storage }).array('file');
 app.post('/uploadFiles', function (req, res) {
     upload(req, res, function (err) {
         if (err instanceof multer.MulterError) {
@@ -27,6 +28,6 @@ app.post('/uploadFiles', function (req, res) {
  })
 });
 app.get('/downloadFile', (req, res) => {
- 
+   res.sendFile('/Users/bhaskar/Uploads/'+req.query.filename)
 });
-app.listen(port, () => console.log(` app listening at http://localhost:${port}`))
+app.listen(port, () => console.log(` Server listening at http://localhost:${port}`))
