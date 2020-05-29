@@ -47,4 +47,8 @@
     color: green;
     font-weight: 900;
   }
+  .custom-file{
+    width: 50% !important;
+    margin: 40px 24px 0px 25px !important;
+  }
   
