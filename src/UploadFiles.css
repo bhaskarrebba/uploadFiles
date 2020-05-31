@@ -76,4 +76,10 @@
       position: relative;
       left: 22%;
     }
-  
+    .custom-file-input:lang(en)~.custom-file-label::after{
+      background-image: linear-gradient(#2bd6c6e6, #074c94);
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+ 
