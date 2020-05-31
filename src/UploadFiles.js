@@ -2,11 +2,18 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './UploadFiles.css';
 import PoupUp from './PopUp';
+import { Progress } from 'reactstrap';
 function UploadFiles() {
     const [fileNames, setFileNameFor] = useState([]);
     const [files, setFilesFor] = useState([]);
     const [fileIndex, setFileIndex] = useState(0);
+    const [loaded, setLoaded] = useState(0);
+    const [flag, setFlag] = useState(false);
+    const [showProgressbar, setshowProgressbar] = useState(false);
     const onChangeHandler = (event) => {
+        setLoaded(0);
+        setFlag(false);
+        setshowProgressbar(true);
         let FilesList = [];
         let FilesObj = [];
         FilesList = [...fileNames];
@@ -32,8 +39,18 @@ function UploadFiles() {
             data.append('file', file);
         })
 
-        axios.post('http://localhost:8080/uploadFiles', data).then(res => {
-            console.log(res);
+        axios.post('http://localhost:8080/uploadFiles', data, {
+            onUploadProgress: ProgressEvent => {
+                setLoaded((ProgressEvent.loaded / ProgressEvent.total * 100))
+            }
+        }).then(res => {
+            //setLoaded(0);
+            setTimeout(setFlag(true), 2000);
+            setTimeout(() => {
+                setFlag(false);
+                setshowProgressbar(false)
+            },
+                2000);
         });
     }
     const getFileIndexToDelete = (index) => {
@@ -89,6 +106,12 @@ function UploadFiles() {
                 </tbody>
             </table>
             <PoupUp deleteFile={deleteFile} />
+            {showProgressbar && <Progress max="100"
+                color="success"
+                value={loaded} >{Math.round(loaded, 2)}%</Progress>}
+            {flag && <div className="upload-status">File(s) Uploaded Successfully</div>
+
+            }
         </div>
     );
 }
