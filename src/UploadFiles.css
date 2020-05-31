@@ -18,8 +18,8 @@
   #filename tr:hover {background-color: #ddd;}
   
   #filename th {
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     text-align: center;
     background-color: #4CAF50;
     background-image: linear-gradient(#2bd6c6e6, #074c94);
