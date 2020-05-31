@@ -3,6 +3,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Available Scripts
 
 In the project directory, you can run:
+For File Server-
+
+### `npm run node-server`
+
+First run Node Server ,execute above command server start listening on port 8080<br />
+
 
 ### `npm start`
 
