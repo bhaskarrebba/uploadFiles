@@ -2,7 +2,6 @@ var express = require('express');
 var app = express();
 var cors = require('cors');
 var multer = require('multer');
-var router = express.Router();
 app.use(cors());
 app.use(express.static('/Users/bhaskar/Uploads'))
 const port = 8080;
