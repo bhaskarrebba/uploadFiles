@@ -51,4 +51,24 @@
     width: 50% !important;
     margin: 40px 24px 0px 25px !important;
   }
+  .bg-success {
+    background-color: #0aab43!important;
+    height: 30px !important;
+    font-weight: bold !important;
+    font-size: 20px !important;
+  }
+  .progress{
+    width:50% !important;
+    margin:25px !important;
+    height: 30px !important;
+    }
+    .upload-status{
+    padding: 12px;
+    margin: 25px;
+    background: lightgrey;
+    width: 50%;
+    border-radius: 10px;
+    font-size: 20px;
+    text-align: center;
+    }
   
