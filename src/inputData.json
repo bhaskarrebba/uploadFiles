@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "value": "Edge"
+    },
+    {
+        "id": "2",
+        "value": "IE"
+    },
+    {
+        "id": "3",
+        "value": "Firefox"
+    },
+    {
+        "id": "4",
+        "value": "Chrome"
+    },
+    {
+        "id": "5",
+        "value": "Safari"
+    }
+]
