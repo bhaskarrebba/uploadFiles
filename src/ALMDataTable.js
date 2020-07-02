@@ -24,8 +24,8 @@ const ALMDataTable = (props) => {
                     </thead>
                     <tbody>
                         {
-                            data && data.map(item=>{
-                                return(
+                            data && data.map(item => {
+                                return (
                                     <tr>
                                         <td>{item.id}</td>
                                         <td>{item.userId}</td>

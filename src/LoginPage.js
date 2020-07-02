@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import { withRouter } from "react-router-dom";
+import './LoginPage.css';
 
-
-
-function LoginPage(props) {
+const LoginPage = (props) => {
     const { history } = props;
+    const [errorFlag, setErroFlag] = useState(false);
     const [inputs, setInputs] = useState({
         username: '',
         password: ''
@@ -23,26 +22,34 @@ function LoginPage(props) {
         setSubmitted(true);
         if (username && password) {
             getAuth();
-            history.push('/almdata');
+
 
         }
     }
     const getAuth = async () => {
-        const data = await Axios.get('https://jsonplaceholder.typicode.com/todos/1');
+        const data = await Axios.get('https://jsonplaceholder.typicode.com/todos/1', {
+            data: {
+                username: username,
+                pwd: password
+            }
+
+        });
         if (data && data.data) {
             const sessionData = await Axios.get('https://jsonplaceholder.typicode.com/todos/3');
             if (sessionData && sessionData.data) {
-                console.log('Now get ALM Data');
-                
-
+                console.log('Login Successs--Navigate to ALM Page--');
+                history.push('/almdata');
             }
 
+        } else {
+            setErroFlag(true);
         }
     }
 
 
     return (
         <div className="col-lg-5 offset-lg-4">
+            {errorFlag && <h3>Login Credentials Failed</h3>}
             <h2>Login</h2>
             <form name="form" onSubmit={handleSubmit}>
                 <div className="form-group">

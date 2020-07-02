@@ -4,12 +4,14 @@ import UploadFiles from './UploadFiles';
 import { InputBox } from './InputBox';
 import { Header } from './Header';
 import { LoginPage } from './LoginPage';
-import AppRouter  from './AppRouter';
-import {withRouter}  from 'react-router-dom';
+import AppRouter from './AppRouter';
+import { withRouter } from 'react-router-dom';
 
 
-function App(history) {
-
+const App = ({history}) => {
+  // useEffect(() => {
+  //   history.push('/');
+  // })
   return (
     <React.Fragment>
       <Header />
