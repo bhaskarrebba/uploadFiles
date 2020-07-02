@@ -11,7 +11,6 @@ function LoginPage(props) {
         password: ''
     });
     const [submitted, setSubmitted] = useState(false);
-    const [data, setData] = useState(null);
     const { username, password } = inputs;
     function inputChange(e) {
         const { name, value } = e.target;
@@ -34,11 +33,7 @@ function LoginPage(props) {
             const sessionData = await Axios.get('https://jsonplaceholder.typicode.com/todos/3');
             if (sessionData && sessionData.data) {
                 console.log('Now get ALM Data');
-                const ALMData = await Axios.get('https://jsonplaceholder.typicode.com/todos/5');
-                if (ALMData && ALMData.data) {
-                    console.log("Final Data to display in Table--", ALMData.data);
-                    setData(ALMData.data);
-                }
+                
 
             }
 
