@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import UploadFiles from './UploadFiles';
 import { InputBox } from './InputBox';
-import {Header}  from './Header';
-function App() {
+import { Header } from './Header';
+import { LoginPage } from './LoginPage';
+import AppRouter  from './AppRouter';
+import {withRouter}  from 'react-router-dom';
+
+
+function App(history) {
+
   return (
     <React.Fragment>
-       <Header/>
-    <div className="container">
-     
-      <div className="row">
-        <div className="col-lg-6">
-          <UploadFiles />
-        </div>
-        <div className="col-lg-6">
-          <InputBox />
+      <Header />
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12"><AppRouter /></div>
         </div>
       </div>
-    </div>
     </React.Fragment>
   );
 }
 
-export default App;
+export default withRouter(App);
