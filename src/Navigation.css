@@ -1,0 +1,18 @@
+.navigation{
+    width: 100%;
+    background-color: #FF6200;
+    color: white;
+    padding: 0 1rem;
+}
+
+.navigation .navigation_list{
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.navigation_list .navigation_item{
+    display: inline-block;
+    border-right: thin solid white;
+    padding: 0 1rem;
+}

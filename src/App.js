@@ -4,6 +4,7 @@ import UploadFiles from './UploadFiles';
 import { InputBox } from './InputBox';
 import { Header } from './Header';
 import { LoginPage } from './LoginPage';
+import {Navigation} from './Navigation';
 import AppRouter from './AppRouter';
 import { withRouter } from 'react-router-dom';
 
@@ -15,6 +16,7 @@ const App = ({history}) => {
   return (
     <React.Fragment>
       <Header />
+      <Navigation />
       <div className="container">
         <div className="row">
           <div className="col-lg-12"><AppRouter /></div>

@@ -12,7 +12,6 @@ import {ALMDataTable}  from './ALMDataTable';
             <Route path="/" component={LoginPage} exact/>
             <Route path="/upload" component={UploadFiles} exact/>
             <Route path="/almdata" component={ALMDataTable} exact/>
-            
         </Switch>
     )
 }
