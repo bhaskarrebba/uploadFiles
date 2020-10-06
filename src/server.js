@@ -29,4 +29,8 @@ app.post('/uploadFiles', function (req, res) {
 app.get('/downloadFile', (req, res) => {
    res.sendFile('/Users/bhaskar/Uploads/'+req.query.filename)
 });
+app.get('/test', (req, res) => {
+  res.send("hiiiiii")
+});
 app.listen(port, () => console.log(` Server listening at http://localhost:${port}`))
+
