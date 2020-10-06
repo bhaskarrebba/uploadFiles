@@ -15,7 +15,11 @@ const LoginPage = (props) => {
         const { name, value } = e.target;
         setInputs(inputs => ({ ...inputs, [name]: value }));
     }
-
+const HitNodeServer=async()=>{
+    console.log("Server Hitt");
+    const test = await Axios.get('http://localhost:3008/');
+    console.log(test);
+}
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -75,7 +79,7 @@ const LoginPage = (props) => {
                     }
                 </div>
                 <div className="form-group">
-                    <button className="btn btn-primary">
+                    <button className="btn btn-primary" onClick={HitNodeServer}>
                         Login
                     </button>
 
