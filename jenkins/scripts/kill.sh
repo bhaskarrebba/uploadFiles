@@ -6,4 +6,4 @@ echo 'was executed.'
 set -x
 kill $(cat .pidfile)
 
-npm run node-server
+npm run node-server &
