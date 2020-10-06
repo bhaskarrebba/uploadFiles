@@ -20,7 +20,8 @@ pipeline {
                 print 'Node Starting----------'
                 sh 'node index.js' 
             }
-        } stage('Build') {
+        } 
+        stage('Build') {
             steps {
                 print 'Building code'
                 sh 'npm run build' 
@@ -28,7 +29,6 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 print 'Deployment Success'
             }
