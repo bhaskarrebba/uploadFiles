@@ -15,23 +15,24 @@ pipeline {
                 sh 'npm run test'
             }
         }
-         stage('Start Node') {
-            steps {
-                print 'Node Starting----------'
-                sh 'node index.js' 
-            }
-        } 
+         
         stage('Build') {
             steps {
                 print 'Building code'
                 sh 'npm run build' 
             }
         }
-        stage('Deliver') {
+        stage('Prepare SetUp') {
             steps {
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 print 'Deployment Success'
             }
         }
+        stage('Start Node') {
+            steps {
+                print 'Node Starting----------'
+                sh 'node index.js' 
+            }
+        } 
     }
 }
