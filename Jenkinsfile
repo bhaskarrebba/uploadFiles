@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 print 'Test Running----------'
-                sh 'npm run test'
+                sh 'npm run test &'
             }
         }
          stage('Start Node') {
