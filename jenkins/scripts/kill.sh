@@ -5,4 +5,5 @@ echo '(written to ".pidfile"), all of which were conducted when "deliver.sh"'
 echo 'was executed.'
 set -x
 kill $(cat .pidfile)
-npm start
+
+npm run node-server
