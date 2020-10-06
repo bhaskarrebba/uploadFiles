@@ -4,7 +4,7 @@ var cors = require('cors');
 var multer = require('multer');
 app.use(cors());
 app.use(express.static('/Users/bhaskar/Uploads'))
-const port = 8080;
+const port = 3008;
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
