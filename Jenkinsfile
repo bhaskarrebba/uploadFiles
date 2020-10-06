@@ -4,7 +4,7 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Build') {
+        stage('NPM Install') {
             steps {
                 sh 'npm install'
             }
@@ -19,6 +19,11 @@ pipeline {
             steps {
                 print 'Node Starting----------'
                 sh 'node index.js' 
+            }
+        } stage('Build') {
+            steps {
+                print 'Building code'
+                sh 'npm run build' 
             }
         }
         stage('Deliver') {
