@@ -18,7 +18,7 @@ pipeline {
          stage('Start Node') {
             steps {
                 print 'Node Starting----------'
-                sh 'npm run node-server' 
+                sh 'npm index.js' 
             }
         }
         stage('Deliver') {
