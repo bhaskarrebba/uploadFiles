@@ -8,8 +8,10 @@ pipeline {
     stages {
         stage("Prepare WS"){
             steps{
-                env.nodeJS="${tool  'NodeJS-10.16.0'}";
-                env.PATH="${env.nodeJS}/bin:${env.PATH}"
+                script{
+                    env.nodeJS="${tool  'NodeJS-10.16.0'}";
+                    env.PATH="${env.nodeJS}/bin:${env.PATH}"
+                }
             }
         }
         stage("Copy Files"){
