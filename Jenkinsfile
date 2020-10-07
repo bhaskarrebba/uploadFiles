@@ -41,7 +41,7 @@ pipeline {
         stage('Start Servers') {
             steps {
                 script{
-                env.APPROVED=input message: 'User input required',parameters:[choice(name:'Approve ?',choices:'no/yes',description:'Choose YES to deploy')]
+                env.APPROVED=input message: 'User input required',parameters: [choice(name:'Approval Required', choices:'no\nyes',description:'Choose YES to deploy')]
                 print env.APPROVED
                 if(env.APPROVED=="yes"){
                     sh './jenkins/scripts/kill.sh'
