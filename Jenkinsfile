@@ -7,10 +7,12 @@ pipeline {
     }
     stages {
         stage("Copy Files"){
+            steps{
             print 'copy build folder to server'
             sh 'mkdir deployment'
             sh 'mkdir deployment/public'
             sh 'cp config/buildpacks/releaseBuildpack/nginx.conf deployment'
+            }
         }
        stage('Test') {
             steps {
