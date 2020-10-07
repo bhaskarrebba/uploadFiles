@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import UploadFiles from './UploadFiles';
-import { InputBox } from './InputBox';
+
+
 import { Header } from './Header';
-import { LoginPage } from './LoginPage';
+
 import {Navigation} from './Navigation';
 import AppRouter from './AppRouter';
 import { withRouter } from 'react-router-dom';
