@@ -18,6 +18,7 @@ pipeline {
         stage("Copy Files"){
             steps{
             print 'copy build folder to server'
+            sh 'rm -r -f deployment'
             sh 'mkdir deployment'
             sh 'mkdir deployment/public'
             sh 'cp config/buildpacks/releaseBuildpack/nginx.conf deployment'
