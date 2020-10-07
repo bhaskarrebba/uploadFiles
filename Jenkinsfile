@@ -6,8 +6,13 @@ pipeline {
         CI = 'true'
     }
     stages {
-       
-        stage('Test') {
+        stage("Copy Files"){
+            print 'copy build folder to server'
+            sh 'mkdir deployment'
+            sh 'mkdir deployment/public'
+            sh 'cp config/buildpacks/releaseBuildpack/nginx.conf deployment'
+        }
+       stage('Test') {
             steps {
                 sh 'npm run test'
               
