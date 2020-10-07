@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        CI = 'true'
+        CI = 'false'
     }
     stages {
         stage("Prepare WS"){
