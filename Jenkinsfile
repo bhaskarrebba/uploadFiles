@@ -34,7 +34,7 @@ pipeline {
             sh 'mkdir deployment'
             sh 'mkdir deployment/public'
             sh 'cp config/buildpacks/releaseBuildpack/nginx.conf deployment'
-            sh 'cp build deployment/public'
+            sh 'cp -r build deployment/public'
             }
         }
       
