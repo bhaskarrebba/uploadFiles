@@ -11,6 +11,7 @@ pipeline {
                 script{
                     env.nodeJS="${tool  'NodeJS-10.16.0'}";
                     env.PATH="${env.nodeJS}/bin:${env.PATH}"
+                    sh 'npm install'
                 }
             }
         }
