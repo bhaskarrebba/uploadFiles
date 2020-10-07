@@ -40,8 +40,14 @@ pipeline {
       
         stage('Start Servers') {
             steps {
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                script{
+                env.APPROVED=input message: 'User input required',parameters:[choice(name:'Approve ?',choices:'no/yes',description:'Choose YES to deploy')]
+                print env.APPROVED
+                if(env.APPROVED=="yes"){
+                    sh './jenkins/scripts/kill.sh'
+                }
+                   
+                }
                 
                 
             }
