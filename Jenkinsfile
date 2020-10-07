@@ -45,7 +45,7 @@ pipeline {
                 print env.APPROVED
                 if(env.APPROVED=="yes"){
                     sh 'npm run node-server &'
-                    sh 'npm start &'
+                    
                 }
                    
                 }
