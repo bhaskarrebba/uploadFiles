@@ -44,7 +44,7 @@ pipeline {
                 env.APPROVED=input message: 'User input required',parameters: [choice(name:'Approval Required', choices:'no\nyes',description:'Choose YES to deploy')]
                 print env.APPROVED
                 if(env.APPROVED=="yes"){
-                    sh 'npm run node-server &'
+                    sh 'npm run node-server'
                     sh 'npm start &'
                 }
                    
